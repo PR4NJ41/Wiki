@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 describe 'course copying', type: :feature, js: true do
-  let(:user) { create(:user) }
+  let(:user) { create(:admin) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
       '/4A_Wikipedia_Assignment_(Spring_2024)'
@@ -14,7 +14,7 @@ describe 'course copying', type: :feature, js: true do
     stub_oauth_edit
     stub_course
     login_as(user)
-    sleep 2
+    sleep 8
   end
 
   let(:new_term) { 'Spring2016' }
