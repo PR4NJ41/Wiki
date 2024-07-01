@@ -53,7 +53,7 @@ describe 'course copying', type: :feature, js: true do
     expect(page).not_to have_content 'Mark the holidays'
     click_button 'Save New Course'
 
-    sleep 1
+    sleep 0.5
 
     new_course = Course.last
     expect(page).to have_current_path('/courses/New_School/New_Course_Title_(Spring2016)')
