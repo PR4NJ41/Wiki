@@ -21,7 +21,7 @@ describe 'course copying', type: :feature, js: true do
 
   it 'checks copying of course across server' do
     visit '/copy_course'
-    expect(page).to have_field('url', visible: true)
+    expect(page).to have_field('url', visible: false)
     fill_in 'url', with: course_url
     click_button 'Copy Course'
 
