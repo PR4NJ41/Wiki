@@ -81,6 +81,13 @@ jobs:
           coverageCommand: bundle exec rspec spec/ --color --profile --format documentation
           coverageLocations: |
             ${{github.workspace}}/public/js_coverage/lcov.info:lcov
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: tmp/screenshots
             
       - name: Ruby linting
         run: bundle exec rubocop
