@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe 'tourse copying', type: :feature, js: true do
+describe 'course copying', type: :feature, js: true do
   let(:user) { create(:user) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
@@ -20,8 +20,7 @@ describe 'tourse copying', type: :feature, js: true do
   let(:subject) { 'Advanced Foo' }
 
   it 'checks copying of course across server' do
-    visit root_path
-    click_link 'Copy Course from another Server'
+    visit '/copy_course'
     fill_in 'url', with: course_url
     click_button 'Copy Course'
 
