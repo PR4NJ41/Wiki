@@ -14,6 +14,7 @@ describe 'course copying', type: :feature, js: true do
     stub_oauth_edit
     login_as(user, scope: :user)
     stub_course
+    sleep 2
   end
 
   let(:new_term) { 'Spring2016' }
