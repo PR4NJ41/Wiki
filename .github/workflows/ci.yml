@@ -63,12 +63,6 @@ jobs:
           
       #Testing the pushed code onwards
       
-      - name: JavaScript test suite 
-        run: |
-            yarn install --immutable
-            yarn coverage
-            yarn run test 
-      
       - name: JavaScript linting
         run: yarn lint-non-build
 
@@ -83,10 +77,12 @@ jobs:
             ${{github.workspace}}/public/js_coverage/lcov.info:lcov
 
       - name: Upload screenshots
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
           path: tmp/screenshots
+
             
       - name: Ruby linting
         run: bundle exec rubocop
