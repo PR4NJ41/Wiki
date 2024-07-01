@@ -11,8 +11,8 @@ describe 'course copying', type: :feature, js: true do
   before do
     allow(Features).to receive(:wiki_ed?).and_return(false)
     allow(Features).to receive(:open_course_creation?).and_return(true)
-    login_as(user, scope: :user)
     stub_oauth_edit
+    login_as(user, scope: :user)
     stub_course
   end
 
