@@ -21,7 +21,8 @@ describe 'course copying', type: :feature, js: true do
 
   it 'checks copying of course across server' do
     visit '/copy_course'
-    fill_in 'url', with: course_url, wait: 10
+    expect(page).to have_field('url', visible: true)
+    fill_in 'url', with: course_url
     click_button 'Copy Course'
 
     within('.wizard__panel.active.cloned-course') do
