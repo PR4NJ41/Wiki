@@ -23,7 +23,6 @@ describe 'course copying', type: :feature, js: true do
     visit root_path
     click_link 'Copy Course from another Server'
     fill_in 'url', with: course_url
-    page.save_screenshot(full: true)
     click_button 'Copy Course'
 
     within('.wizard__panel.active.cloned-course') do
