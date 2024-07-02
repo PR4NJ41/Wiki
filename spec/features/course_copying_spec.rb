@@ -11,7 +11,7 @@ describe 'course copying', type: :feature, js: true do
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     allow(Features).to receive(:wiki_ed?).and_return(false)
-    allow(Features).to receive(:open_course_creation?).and_return(true)
+    # allow(Features).to receive(:open_course_creation?).and_return(true)
     # stub_oauth_edit
     stub_course
   end
@@ -59,7 +59,7 @@ describe 'course copying', type: :feature, js: true do
     expect(page).not_to have_content 'Mark the holidays'
     click_button 'Save New Course'
 
-    sleep 0.5
+    sleep 2
 
     new_course = Course.last
     expect(page).to have_current_path('/courses/New_School/New_Course_Title_(Spring2016)')
