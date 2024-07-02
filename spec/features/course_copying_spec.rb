@@ -9,10 +9,10 @@ describe 'course copying', type: :feature, js: true do
   end
 
   before do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:user).and_return(user)
     allow(Features).to receive(:wiki_ed?).and_return(false)
-    # allow(Features).to receive(:open_course_creation?).and_return(true)
-    # stub_oauth_edit
+    allow(Features).to receive(:open_course_creation?).and_return(true)
+    stub_oauth_edit
     stub_course
   end
 
