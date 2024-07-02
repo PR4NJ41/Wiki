@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe 'course copying' do
+describe 'course copying', type: :feature, js: true do
   let(:user) { create(:user) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
@@ -22,8 +22,10 @@ describe 'course copying' do
   it 'checks copying of course across server' do
     login_as(user)
     visit root_path
+    page.save_screenshot(full: true)
     click_link 'Copy Course from another Server'
     fill_in 'url', with: course_url
+    page.save_screenshot(full: true)
     click_button 'Copy Course'
 
     within('.wizard__panel.active.cloned-course') do
