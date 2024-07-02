@@ -90,4 +90,5 @@ jobs:
           path: tmp/screenshots
             
       - name: Ruby linting
+        if: always()
         run: bundle exec rubocop
