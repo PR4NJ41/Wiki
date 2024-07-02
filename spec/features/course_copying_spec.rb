@@ -12,7 +12,6 @@ describe 'course copying', type: :feature, js: true do
     stub_wiki_validation
     allow(Features).to receive(:wiki_ed?).and_return(false)
     allow(Features).to receive(:open_course_creation?).and_return(true)
-    stub_oauth_edit
     stub_course
     login_as(user, scope: :user)
   end
