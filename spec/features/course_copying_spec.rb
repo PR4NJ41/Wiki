@@ -2,14 +2,13 @@
 require 'rails_helper'
 
 describe 'course copying', type: :feature, js: true do
-  let(:user) { create(:user) }
+  let(:user) { create(:admin) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
       '/4A_Wikipedia_Assignment_(Spring_2024)'
   end
 
   before do
-    allow_any_instance_of(ApplicationController).to receive(:user).and_return(user)
     allow(Features).to receive(:wiki_ed?).and_return(false)
     allow(Features).to receive(:open_course_creation?).and_return(true)
     stub_oauth_edit
