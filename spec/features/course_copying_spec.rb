@@ -12,7 +12,7 @@ describe 'course copying', type: :feature, js: true do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     allow(Features).to receive(:wiki_ed?).and_return(false)
     allow(Features).to receive(:open_course_creation?).and_return(true)
-    stub_oauth_edit
+    # stub_oauth_edit
     stub_course
   end
 
@@ -31,7 +31,7 @@ describe 'course copying', type: :feature, js: true do
     page.save_screenshot(full: true)
     click_button 'Copy Course'
 
-    within('.wizard__panel.active.cloned-course') do
+    within('.wizard__panel.active.cloned-course', wait: 10) do
       fill_in 'course_title', with: 'New Course Title'
       fill_in 'course_school', with: 'New School'
       fill_in 'course_subject', with: 'New Subject'
