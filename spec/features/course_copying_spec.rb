@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 describe 'course copying', type: :feature, js: true do
-  let(:user) { create(:admin) }
+  let(:user) { create(:user) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
       '/4A_Wikipedia_Assignment_(Spring_2024)'
