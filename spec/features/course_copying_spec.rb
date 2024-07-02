@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe 'course copying', type: :feature, js: true do
+describe 'course copying', type: :feature do
   let(:user) { create(:user) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
