@@ -25,6 +25,10 @@ class CopyCourseController < ApplicationController
   end
 
   def require_admin_if_wiki_ed
-    require_admin_permissions if Features.wiki_ed?
+    if Features.wiki_ed?
+      unless current_user.admin?
+        redirect_to root_path, alert: 'You need admin privileges to perform this action.'
+      end
+    end
   end
 end
