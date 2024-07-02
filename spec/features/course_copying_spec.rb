@@ -20,7 +20,10 @@ describe 'course copying', type: :feature, js: true do
   let(:subject) { 'Advanced Foo' }
 
   it 'checks copying of course across server' do
+    sleep 10
     login_as(user)
+    visit '/'
+    page.save_screenshot(full: true)
     visit root_path
     page.save_screenshot(full: true)
     click_link 'Copy Course from another Server'
