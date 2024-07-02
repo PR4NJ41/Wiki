@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 describe 'course copying', type: :feature, js: true do
-  let(:user) { create(:admin) }
+  let(:user) { create(:user) }
   let(:course_url) do
     'https://dashboard.wikiedu.org/courses/Riverside_City_College' \
       '/4A_Wikipedia_Assignment_(Spring_2024)'
@@ -13,13 +13,13 @@ describe 'course copying', type: :feature, js: true do
     allow(Features).to receive(:open_course_creation?).and_return(true)
     stub_oauth_edit
     stub_course
-    login_as(user)
   end
 
   let(:new_term) { 'Spring2016' }
   let(:subject) { 'Advanced Foo' }
 
   it 'checks copying of course across server' do
+    login_as(user)
     visit root_path
     click_link 'Copy Course from another Server'
     fill_in 'url', with: course_url
