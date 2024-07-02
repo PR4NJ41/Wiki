@@ -140,12 +140,6 @@ class CoursesController < ApplicationController
     @alerts = current_user&.admin? ? @course.alerts : @course.public_alerts
   end
 
-  def suspected_plagiarism
-    set_course
-    @revisions = @course.suspected_plagiarism
-    @show_report = current_user&.can_edit?(@course)
-  end
-
   ##########################
   # User-initiated actions #
   ##########################
@@ -227,7 +221,7 @@ class CoursesController < ApplicationController
   def validate
     slug = params[:id].gsub(/\.json$/, '')
     @course = find_course_by_slug(slug)
-    course_cloned_status = @course.cloned_status === 3
+    course_cloned_status = @course.cloned_status == 3
     raise NotPermittedError unless current_user&.can_edit?(@course) || course_cloned_status
   end
 
