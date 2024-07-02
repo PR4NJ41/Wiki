@@ -23,12 +23,7 @@ describe 'course copying', type: :feature, js: true do
   let(:subject) { 'Advanced Foo' }
 
   it 'checks copying of course across server' do
-    sleep 10
-    login_as(user, scope: :user)
-    visit '/'
-    page.save_screenshot(full: true)
     visit root_path
-    page.save_screenshot(full: true)
     click_link 'Copy Course from another Server'
     fill_in 'url', with: course_url
     page.save_screenshot(full: true)
@@ -61,8 +56,6 @@ describe 'course copying', type: :feature, js: true do
     find('input#no_holidays').click
     expect(page).not_to have_content 'Mark the holidays'
     click_button 'Save New Course'
-
-    sleep 2
 
     new_course = Course.last
     expect(page).to have_current_path('/courses/New_School/New_Course_Title_(Spring2016)')
