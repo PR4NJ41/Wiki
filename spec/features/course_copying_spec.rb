@@ -26,7 +26,7 @@ describe 'course copying', type: :feature, js: true do
     page.save_screenshot(full: true)
     click_button 'Copy Course'
 
-    within('.wizard__panel.active.cloned-course', wait: 10) do
+    within('.wizard__panel.active.cloned-course') do
       fill_in 'course_title', with: 'New Course Title'
       fill_in 'course_school', with: 'New School'
       fill_in 'course_subject', with: 'New Subject'
