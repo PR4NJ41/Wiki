@@ -13,6 +13,7 @@ describe 'course copying', type: :feature, js: true do
     allow(Features).to receive(:open_course_creation?).and_return(true)
     stub_oauth_edit
     stub_course
+    login_as(user, scope: :user)
   end
 
   let(:new_term) { 'Spring2016' }
@@ -20,7 +21,7 @@ describe 'course copying', type: :feature, js: true do
 
   it 'checks copying of course across server' do
     sleep 10
-    login_as(user)
+    login_as(user, scope: :user)
     visit '/'
     page.save_screenshot(full: true)
     visit root_path
